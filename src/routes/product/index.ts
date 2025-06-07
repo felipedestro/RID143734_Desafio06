@@ -14,5 +14,5 @@ productRouter.get("/search", getProductByName as RequestHandler);
 productRouter.get("/", getAllProducts as RequestHandler);
 productRouter.get("/:id", getProductById as RequestHandler);
 productRouter.post("/", createProduct as RequestHandler);
-productRouter.put("/:id", updateProduct as RequestHandler);
+productRouter.patch("/:id", updateProduct as RequestHandler);
 productRouter.delete("/:id", deleteProduct as RequestHandler);

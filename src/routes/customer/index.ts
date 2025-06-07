@@ -15,7 +15,7 @@ customerRouter.get("/search", getCustomerByName as RequestHandler);
 customerRouter.get("/", getAllCustomers as RequestHandler);
 customerRouter.get("/:id", getCustomerById as RequestHandler);
 customerRouter.post("/", createCustomer as RequestHandler);
-customerRouter.put("/:id", updateCustomer as RequestHandler);
+customerRouter.patch("/:id", updateCustomer as RequestHandler);
 customerRouter.delete("/:id", deleteCustomer as RequestHandler);
 
 export { customerRouter };
