@@ -7,17 +7,18 @@ import {
   update,
   getByName,
 } from "@/services/customer";
+import { Customer } from "@prisma/client";
 import { Request, Response } from "express";
 
 export const createCustomer = (req: Request, res: Response) => {
-  const customer = req.body;
+  const customer = req.body as Customer;
 
-  if (!customer.name) {
-    return res.status(400).json({ message: "Name is required" });
+  if (!customer.nameCustomer || !customer.emailCustomer) {
+    return res.status(400).json({ message: "Name and email are required" });
   }
 
   try {
-    getByEmail(customer.email).then(async (existingCustomer) => {
+    getByEmail(customer.emailCustomer).then(async (existingCustomer) => {
       if (existingCustomer) {
         return res.status(400).json({ message: "Email already exists" });
       } else {
@@ -68,9 +69,9 @@ export const getCustomerById = async (req: Request, res: Response) => {
 
 export const updateCustomer = async (req: Request, res: Response) => {
   const { id } = req.params;
-  const customer = req.body;
+  const customer = req.body as Customer;
 
-  customer.id = id;
+  customer.idCustomer = id;
 
   const checkCustomer = await getById(id);
 
