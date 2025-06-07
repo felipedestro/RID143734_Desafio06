@@ -7,11 +7,9 @@
   <a href="#executando-o-projeto">Excutando o Projeto</a>&nbsp;&nbsp;&nbsp;
 </p>
 
-## Desafio: Desenvolva uma API e integre ao front-end de uma aplicação
+## Desafio: Integração e modelagem de dados de um produto digital
 
 > [!TIP]
-> Desafio: Integração e modelagem de dados de um produto digital
->
 >A empresa DNCommerce é loja online que vende produtos de beleza e está procurando um novo sistema de gerenciamento de estoque e pedidos. O sistema deve ser capaz de realizar o cadastro de produtos e o registro de vendas de forma eficiente, através do desenvolvimento de APIs e integração de sistemas, criando uma solução simples e eficiente para o gerenciamento da loja. Ela precise que você estruture o back-end e modele o banco de dados da aplicação!
 
 ## Tecnologias
@@ -35,7 +33,7 @@
 
 - `./src/services/` - Todos os serviços a serem executados na API.
 
-- `./src/route.ts` - Rotas configurada para execução da API.
+- `./src/routes/` - Rotas configurada para execução da API.
 
 ## Executando o Projeto
 
