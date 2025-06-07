@@ -47,10 +47,10 @@ Certifique-se de quem todos requisitos necessários para execução do projeto d
 #### Siga os passos abaixo:
 
 - Clone o projeto:
-  `git clone https://github.com/felipedestro/backend-libary.git`
+  `git clone https://github.com/felipedestro/RID143734_Desafio06`
 
 * Acesse o diretorio
-  `cd`
+  `cd RID143734_Desafio06`
 
 - Instale as dependências
   `npm install` ou `npm i`
