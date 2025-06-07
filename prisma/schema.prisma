@@ -1,0 +1,62 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Customer {
+  idCustomer    String  @id @default(uuid())
+  nameCustomer  String
+  emailCustomer String? @unique
+  phoneCustomer String?
+  orders        Order[]
+  sales         Sale[]
+}
+
+model Product {
+  idProduct          String      @id @default(uuid())
+  nameProduct        String
+  descriptionProduct String?
+  priceProduct       Decimal
+  stock              Stock[]
+  orderItems         OrderItem[]
+}
+
+model Stock {
+  idStock       String  @id @default(uuid())
+  product       Product @relation(fields: [productId], references: [idProduct], onDelete: Cascade)
+  productId     String
+  quantityStock Int
+}
+
+model Order {
+  idOrder    String      @id @default(uuid())
+  customer   Customer    @relation(fields: [customerId], references: [idCustomer], onDelete: Cascade)
+  customerId String
+  orderDate  DateTime    @default(now())
+  items      OrderItem[]
+  sale       Sale?
+}
+
+model OrderItem {
+  idOrderItem   String  @id @default(uuid())
+  order         Order   @relation(fields: [orderId], references: [idOrder], onDelete: Cascade)
+  orderId       String
+  product       Product @relation(fields: [productId], references: [idProduct], onDelete: Cascade)
+  productId     String
+  quantityItems Int
+  partialPrice  Decimal
+}
+
+model Sale {
+  idSale     String   @id @default(uuid())
+  order      Order    @relation(fields: [orderId], references: [idOrder], onDelete: Cascade)
+  orderId    String   @unique
+  customer   Customer @relation(fields: [customerId], references: [idCustomer], onDelete: Cascade)
+  customerId String
+  saleDate   DateTime @default(now())
+  totalSale  Decimal
+}
