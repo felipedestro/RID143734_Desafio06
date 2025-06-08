@@ -2,15 +2,16 @@ import {
   create,
   getAll,
   getById,
-  update,
-  remove,
   getByProductId,
   getByProductName,
+  remove,
+  update,
 } from "@/services/stock";
-import { Request, response, Response } from "express";
+import { Stock } from "@prisma/client";
+import { Request, Response } from "express";
 
 export const createStock = async (req: Request, res: Response) => {
-  const stock = req.body;
+  const stock = req.body as Stock;
 
   if (!stock.productId) {
     return res.status(400).json({ message: "Product ID is required" });
@@ -19,9 +20,14 @@ export const createStock = async (req: Request, res: Response) => {
   const checkStock = await getByProductId(stock.productId);
 
   if (checkStock) {
-    stock.id = checkStock.idStock;
-    stock.quantity = checkStock.quantityStock + stock.quantity;
-    const updatedStock = await update(stock);
+    stock.idStock = checkStock.idStock;
+    stock.quantityStock = checkStock.quantityStock + stock.quantityStock;
+
+    const updatedStock = await update({
+      idStock: stock.idStock,
+      productId: stock.productId,
+      quantityStock: stock.quantityStock,
+    });
     return res.status(200).json(updatedStock);
   }
 
@@ -33,7 +39,7 @@ export const createStock = async (req: Request, res: Response) => {
   }
 };
 
-export const getAllStocks = async (req: Request, res: Response) => {
+export const getAllStocks = async (_req: Request, res: Response) => {
   try {
     const stocks = await getAll();
     res.status(200).json(stocks);
@@ -86,8 +92,8 @@ export const getStockByProductId = async (req: Request, res: Response) => {
 
 export const updateStock = async (req: Request, res: Response) => {
   const { id } = req.params;
-  const stock = req.body;
-  stock.id = id;
+  const stock = req.body as Stock;
+  stock.idStock = id;
 
   const checkStock = await getById(id);
 
@@ -96,7 +102,11 @@ export const updateStock = async (req: Request, res: Response) => {
   }
 
   try {
-    const updatedStock = await update(stock);
+    const updatedStock = await update({
+      idStock: stock.idStock,
+      productId: stock.productId,
+      quantityStock: stock.quantityStock,
+    });
     res.status(200).json(updatedStock);
   } catch (error) {
     res.status(500).json({ message: "Error updating stock" });
