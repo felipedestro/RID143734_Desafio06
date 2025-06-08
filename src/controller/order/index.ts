@@ -51,8 +51,8 @@ export const createOrder = async (req: Request, res: Response) => {
 
         return {
           productId: items.productId,
-          quantity: items.quantity,
-          price: Number(product?.priceProduct) * items.quantity,
+          quantityItems: items.quantity,
+          partialPrice: Number(product?.priceProduct) * items.quantity,
         };
       })
     );
@@ -64,6 +64,7 @@ export const createOrder = async (req: Request, res: Response) => {
     res.status(201).json(newOrder);
   } catch (error) {
     res.status(500).json({ message: "Error creating order" });
+    
   }
 };
 
@@ -104,8 +105,8 @@ export const updateOrderWithItens = async (req: Request, res: Response) => {
 
         return {
           productId: items.productId,
-          quantity: items.quantity,
-          price: Number(product?.priceProduct) * items.quantity,
+          quantityItems: items.quantity,
+          partialPrice: Number(product?.priceProduct) * items.quantity,
         };
       })
     );
