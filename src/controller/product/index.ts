@@ -7,17 +7,18 @@ import {
   getExistisName,
   getName,
 } from "@/services/product";
+import { Product } from "@prisma/client";
 import { Request, Response } from "express";
 
 export const createProduct = async (req: Request, res: Response) => {
-  const product = req.body;
+  const product = req.body as Product;
 
-  if (!product.name || !product.price) {
+  if (!product.nameProduct || !product.priceProduct) {
     return res.status(400).json({ message: "Name and price are required" });
   }
 
   try {
-    const existingProduct = await getExistisName(product.name);
+    const existingProduct = await getExistisName(product.nameProduct);
 
     if (existingProduct) {
       return res.status(400).json({ message: "Product already exists" });
@@ -67,8 +68,8 @@ export const getProductByName = async (req: Request, res: Response) => {
 
 export const updateProduct = async (req: Request, res: Response) => {
   const { id } = req.params;
-  const product = req.body;
-  product.id = id;
+  const product = req.body as Product;
+  product.idProduct = id;
 
   const checkProduct = await getById(id);
 
