@@ -13,7 +13,7 @@ import { Request, Response } from "express";
 export const createSales = async (req: Request, res: Response) => {
   const sale = req.body;
 
-  if (!sale.orderId || !sale.customerId) {
+  if (!sale.orderId) {
     return res
       .status(400)
       .json({ message: "Order ID and customer ID are required" });
@@ -37,13 +37,13 @@ export const createSales = async (req: Request, res: Response) => {
       })
     );
 
-    const checkCustomer = await getCustomer(sale.customerId);
+    const checkCustomer = await getCustomer(checkOrder.customer.idCustomer);
 
     if (!checkCustomer) {
       return res.status(404).json({ message: "Customer not found" });
     }
 
-    sale.totalValue = checkOrder.items.reduce((acc, item) => acc + Number(item.partialPrice), 0)
+    sale.totalSale = checkOrder.items.reduce((acc, item) => acc + Number(item.partialPrice), 0)
     sale.orderId = checkOrder.idOrder;
     sale.customerId = checkCustomer.idCustomer;
 

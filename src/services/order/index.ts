@@ -142,7 +142,7 @@ export const getOrderById = async (id: string) => {
         },
       },
       customer: {
-        select: { nameCustomer: true },
+        select: { nameCustomer: true, idCustomer: true },
       },
     },
   });
