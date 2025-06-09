@@ -11,7 +11,7 @@ import {
 
 export const stockRouter = Router();
 
-stockRouter.get("/search", getStockByName as RequestHandler);
+stockRouter.get("/product/search", getStockByName as RequestHandler);
 stockRouter.get("/", getAllStocks as RequestHandler);
 stockRouter.get("/:id", getStockById as RequestHandler);
 stockRouter.post("/", createStock as RequestHandler);
