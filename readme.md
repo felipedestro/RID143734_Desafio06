@@ -91,11 +91,11 @@ GET /products/{id}
 | `id`      | `string` | ✅ | O ID produto que deseja buscar |
 
 ```http
-GET /customers/search?name=NOME
+GET /products/search?name=NOME
 ```
 | Parâmetro   | Tipo       | Obrigatório | Descrição                     |
 | :---------- | :--------- | :-----------| :------------------------------- |
-| `name`      | `string` | ✅ | O nome que deseja buscar |
+| `name`      | `string` | ✅ | O nome do produto que deseja buscar |
 
 ```http
 POST /products
