@@ -153,7 +153,7 @@ GET /stocks/product/{id}
 ```
 | Parâmetro   | Tipo       | Obrigatório | Descrição                     |
 | :---------- | :--------- | :-----------| :------------------------------- |
-| `id`      | `string` | ❌ | O ID do produto que deseja buscar |
+| `id`      | `string` | ✅ | O ID do produto que deseja buscar |
 
 
 ```http
@@ -248,7 +248,7 @@ _Exemplo de array de items_
 ```json
 "items": [
     {
-        "productId": "123",
+        "productId": "a2a7267d-0728-4a51-8199-1a68a9ad7203",
         "quantity": 20
     }
    ]
