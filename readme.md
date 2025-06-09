@@ -77,7 +77,7 @@ DELETE /customers/{id}
 | Parâmetro   | Tipo       | Obrigatório | Descrição                     |
 | :---------- | :--------- | :-----------| :------------------------------- |
 | `id`      | `string` | ✅ | O ID cliente que deseja deletar |
-
+___
 #### Produtos (products)
 
 ```http
@@ -128,7 +128,7 @@ DELETE /products/{id}
 | Parâmetro   | Tipo       | Obrigatório | Descrição                     |
 | :---------- | :--------- | :-----------| :------------------------------- |
 | `id`      | `string` | ✅ | O ID produto que deseja deletar |
-
+___
 #### Estoque (stocks)
 
 ```http
@@ -185,7 +185,7 @@ DELETE /stocks/{id}
 | Parâmetro   | Tipo       | Obrigatório | Descrição                     |
 | :---------- | :--------- | :-----------| :------------------------------- |
 | `id`      | `string` | ✅ | O ID estoque que deseja deletar |
-
+___
 #### Pedidos (Orders / OrderItem)
 
 ```http
@@ -262,7 +262,7 @@ DELETE /orders/{id}
 | Parâmetro   | Tipo       | Obrigatório | Descrição                     |
 | :---------- | :--------- | :-----------| :------------------------------- |
 | `id`      | `string` | ✅ | O ID do pedido que deseja deletar |
-
+___
 #### Vendas (Sales)
 
 ```http
